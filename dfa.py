@@ -1,41 +1,36 @@
-def main():
-  input_string = input("Enter string: ")
-  state = 0
+string=input("enter the string to validate ")
 
-  i = 0
-  while i < len(input_string):
-      if state == 0 and input_string[i] == 'a':
-          state = 1
-          i += 1
-      elif state == 0 and input_string[i] == 'b':
-          state = 4
-          i += 1
-      elif state == 1 and input_string[i] == 'a':
-          state = 2
-          i += 1
-      elif state == 1 and input_string[i] == 'b':
-          state = 3
-          i += 1
-      elif state == 2 and input_string[i] == 'a':
-          state = 2
-          i += 1
-      elif state == 2 and input_string[i] == 'b':
-          state = 3
-          i += 1
-      elif state == 3 and (input_string[i] == 'a' or input_string[i] == 'b'):
-          state = 4
-          i += 1
-      elif state == 4 and (input_string[i] == 'a' or input_string[i] == 'b'):
-          state = 4
-          i += 1
-      else:
-          print("Invalid string")
-          return
+i=0
+state=0
 
-  if state == 1 or state == 3:
-      print("String accepted")
+while i<len(string):
+  if state==0:
+    if string[i]=='a':
+      state=1
+      i+=1
+    elif string[i]=='b':
+      state=3
+      i+=1
+
+  elif state==1:
+    if string[i]=='a':
+      state=1
+      i+=1
+    elif string[i]=='b':
+      state=2
+      i+=1
+      
+  elif state==2:
+    if string[i]=='a':
+      state=3
+      i+=1
+    elif string[i]=='b':
+      state=2
+      i+=1
   else:
-      print("String rejected")
+    break  
+if state==2:
+    print(string,"string is accepeted",sep=" ")   
+else:
+    print(string,"NOT Accepted",sep=" ")     
 
-if __name__ == "__main__":
-  main()
